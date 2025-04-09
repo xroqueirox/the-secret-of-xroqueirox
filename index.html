@@ -7,9 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1 id="typing-title"></h1>
-        <p>Digite seu username e senha para entrar no mundo dos desafios.</p>
+    <div class="binary-rain"></div>
+    <div class="menu-container">
+        <h1>Bem-vindo ao Mistério</h1>
+        <p>Clique nos itens abaixo para interagir:</p>
+        <div class="interactive-elements">
+            <div class="explodable" id="explosion1">💣</div>
+            <div class="message" id="message1">🤔</div>
+            <div class="explodable" id="explosion2">💥</div>
+            <div class="message" id="message2">👀</div>
+        </div>
         <form id="login-form">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -18,38 +25,6 @@
             <button type="submit">Entrar</button>
         </form>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const titleElement = document.getElementById("typing-title");
-            const titleText = "Bem-vindo ao Mistério";
-            let index = 0;
-
-            function typeTitle() {
-                if (index < titleText.length) {
-                    titleElement.textContent += titleText.charAt(index);
-                    index++;
-                    setTimeout(typeTitle, 100);
-                } else {
-                    titleElement.style.borderRight = "none";
-                }
-            }
-
-            typeTitle();
-
-            // Adicionar evento de login
-            document.getElementById("login-form").addEventListener("submit", function(event) {
-                event.preventDefault();
-                const username = document.getElementById("username").value;
-                const password = document.getElementById("password").value;
-
-                if (username === "roqueiro?#00001??" && password === "the-past21093#$%^^") {
-                    // Redireciona para a página do olho
-                    window.location.href = "https://xroqueirox.github.io/olho.html";
-                } else {
-                    alert("Username ou senha incorretos. Tente novamente.");
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

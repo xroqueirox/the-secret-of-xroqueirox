@@ -1,69 +1,112 @@
+/* Estilo geral */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #000; /* Fundo preto */
-    color: #fff; /* Texto branco */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
-}
-
-.container {
-    text-align: center;
-    background-color: #000; /* Fundo preto */
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.eye-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-}
-
-.eye {
-    width: 100px;
-    height: 100px;
-    background: repeating-linear-gradient(
-        45deg,
-        #0f0,
-        #0f0 5px,
-        #000 5px,
-        #000 10px
-    ); /* Código binário simulado */
-    border-radius: 50%;
-    position: relative;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
     overflow: hidden;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: #0f0;
+}
+
+p {
+    text-align: center;
+}
+
+/* Efeito de chuva de códigos binários */
+.binary-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: black;
+    overflow: hidden;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+.binary-rain::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        #0f0,
+        #0f0 20px,
+        #000 20px,
+        #000 40px
+    );
+    animation: fall 10s linear infinite;
+}
+
+/* Estilo do menu interativo */
+.menu-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.interactive-elements {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: blink 5s infinite;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    gap: 10px;
+    margin: 20px 0;
 }
 
-.pupil {
-    width: 30px;
-    height: 30px;
-    background-color: #0f0; /* Verde estilo código */
-    border-radius: 50%;
-    position: absolute;
-    transition: transform 0.1s linear;
+.explodable, .message {
+    font-size: 2rem;
+    cursor: pointer;
 }
 
-/* Animação para o olho piscar */
-@keyframes blink {
-    0%, 90%, 100% {
-        height: 100px;
-    }
-    95% {
-        height: 20px;
-    }
+.explodable:hover {
+    color: red;
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
 }
 
-.video-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
+.message:hover {
+    color: yellow;
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+}
+
+/* Botão de login */
+button {
+    padding: 10px 20px;
+    background: #0f0;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #fff;
+    color: #000;
 }
