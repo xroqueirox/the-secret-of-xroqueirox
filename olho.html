@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olho Misterioso</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Olho Misterioso</h1>
+        <p>Encontre o código escondido para acessar o vídeo.</p>
+        <div class="eye-container">
+            <div class="eye">
+                <div class="pupil"></div>
+            </div>
+        </div>
+        <p style="display: none;" id="hidden-code">Código: v=CBSTL_aDrEA</p> <!-- Código escondido -->
+    </div>
+    <script>
+        // Animação para o olho se mexer
+        const pupil = document.querySelector(".pupil");
+        document.addEventListener("mousemove", (event) => {
+            const eye = document.querySelector(".eye");
+            const eyeRect = eye.getBoundingClientRect();
+            const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+            const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+
+            const angle = Math.atan2(event.pageX - eyeCenterX, -(event.pageY - eyeCenterY));
+            const pupilX = Math.sin(angle) * 20; // Limita o movimento
+            const pupilY = Math.cos(angle) * 20; // Limita o movimento
+
+            pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+        });
+    </script>
+</body>
+</html>

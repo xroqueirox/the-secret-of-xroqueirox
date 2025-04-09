@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mistério e Desafios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="typing-title"></h1>
+        <p>Digite seu username e senha para entrar no mundo dos desafios.</p>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const titleElement = document.getElementById("typing-title");
+            const titleText = "Bem-vindo ao Mistério";
+            let index = 0;
+
+            function typeTitle() {
+                if (index < titleText.length) {
+                    titleElement.textContent += titleText.charAt(index);
+                    index++;
+                    setTimeout(typeTitle, 100);
+                } else {
+                    titleElement.style.borderRight = "none";
+                }
+            }
+
+            typeTitle();
+
+            // Adicionar evento de login
+            document.getElementById("login-form").addEventListener("submit", function(event) {
+                event.preventDefault();
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("password").value;
+
+                if (username === "roqueiro?#00001??" && password === "the-past21093#$%^^") {
+                    window.location.href = "olho.html"; // Redireciona para a página do olho
+                } else {
+                    alert("Username ou senha incorretos. Tente novamente.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
